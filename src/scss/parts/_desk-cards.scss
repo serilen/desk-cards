@@ -6,7 +6,6 @@
   height: auto;
   border: 1px solid rgb(83, 80, 80);
   padding: 20px;
-  perspective: 600px;
   border-radius: 10px;
 }
 
@@ -14,12 +13,10 @@
   width: 176px;
   height: 262px;
   border: 2px solid transparent;
-  cursor: pointer;
   position: relative;
   perspective: 600px;
   line-height: 1;
   font-size: 262px;
-  transform: rotateX(180deg);
 
   &--red {
     color: #aa0f0f;
@@ -38,21 +35,24 @@
 
     &--front {
       background-image: url("@img/bg-card.png");
+      background-size: cover;
       backface-visibility: hidden;
       z-index: 1;
     }
 
     &--back {
       background-color: rgb(240, 226, 226);
+      backface-visibility: hidden;
+      transform: rotateY(-180deg) translateZ(0);
     }
   }
 
   &:hover {
-    .card__face {
+    & .card__face--front {
       transform: rotateY(-180deg);
     }
 
-    .card__back {
+    & .card__face--back {
       transform: rotateY(0);
     }
   }
