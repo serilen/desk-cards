@@ -1,0 +1,59 @@
+.desk-cards {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #9db19d;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(83, 80, 80);
+  padding: 20px;
+  perspective: 600px;
+  border-radius: 10px;
+}
+
+.card {
+  width: 176px;
+  height: 262px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  perspective: 600px;
+  line-height: 1;
+  font-size: 262px;
+  transform: rotateX(180deg);
+
+  &--red {
+    color: #aa0f0f;
+  }
+
+  &__face {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: 0.4s ease-in;
+    transition-property: transform, background;
+    border-radius: 10px;
+
+    &--front {
+      background-image: url("@img/bg-card.png");
+      backface-visibility: hidden;
+      z-index: 1;
+    }
+
+    &--back {
+      background-color: rgb(240, 226, 226);
+    }
+  }
+
+  &:hover {
+    .card__face {
+      transform: rotateY(-180deg);
+    }
+
+    .card__back {
+      transform: rotateY(0);
+    }
+  }
+}
