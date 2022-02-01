@@ -1,8 +1,8 @@
 .desk-cards {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   background-color: #9db19d;
-  width: 100%;
+  width: auto;
   height: auto;
   border: 1px solid rgb(83, 80, 80);
   padding: 20px;
@@ -16,10 +16,26 @@
   position: relative;
   perspective: 600px;
   line-height: 1;
-  font-size: 262px;
+  font-size: 26px;
 
-  &--red {
-    color: #aa0f0f;
+  &__figure {
+    display: block;
+    position: absolute;
+    width: 20%;
+    margin: 15px;
+    text-align: center;
+    height: 25%;
+
+    &--up {
+      top: 0;
+      left: 0;
+    }
+
+    &--down {
+      transform: rotate(180deg);
+      bottom: 0;
+      right: 0;
+    }
   }
 
   &__face {
@@ -29,30 +45,32 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: 0.4s ease-in;
+    transition: 1.4s linear;
     transition-property: transform, background;
     border-radius: 10px;
 
     &--front {
-      background-image: url("@img/bg-card.png");
+      background-color: rgb(240, 226, 226);
       background-size: cover;
       backface-visibility: hidden;
-      z-index: 1;
+      transform: rotateY(-180deg);
+      //z-index: 2;
     }
 
     &--back {
-      background-color: rgb(240, 226, 226);
+      background-image: url("@img/bg-card.png");
       backface-visibility: hidden;
-      transform: rotateY(-180deg) translateZ(0);
+      transform: rotateY(0);
+      //z-index: 1;
     }
   }
 
   &:hover {
-    & .card__face--front {
-      transform: rotateY(-180deg);
+    & .card__face--back {
+      transform: rotateY(180deg);
     }
 
-    & .card__face--back {
+    & .card__face--front {
       transform: rotateY(0);
     }
   }
